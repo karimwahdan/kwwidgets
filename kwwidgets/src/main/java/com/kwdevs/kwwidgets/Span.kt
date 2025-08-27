@@ -5,12 +5,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.ProvidedValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 
 
@@ -41,4 +45,25 @@ fun Span(text:String,
         HorizontalSpacer(2)
     }
 
+}
+
+
+@Composable
+fun LabelSpan(value:String,label:String,labelColor:Color= BLACK,
+              labelWeight: FontWeight=FontWeight.Bold,
+              spanColor: Color= BLUE,maximumLines:Int=1,
+              layoutDirection: ProvidedValue<LayoutDirection> = RIGHT_LAYOUT_DIRECTION){
+    CompositionLocalProvider(layoutDirection) {
+        Row(verticalAlignment = Alignment.CenterVertically){
+            HorizontalSpacer()
+            if(value.trim()!=""){
+                Span(text=value, backgroundColor = spanColor, color = Color.White, maximumLines = maximumLines)
+                HorizontalSpacer()
+            }
+            Label(text=label, color = labelColor, fontWeight = labelWeight , textOverflow = TextOverflow.Ellipsis, softWrap = true)
+            HorizontalSpacer()
+        }
+
+
+    }
 }
