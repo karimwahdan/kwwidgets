@@ -7,13 +7,20 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.DatePickerState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.Locale
+
+val RIGHT_DIRECTION= LayoutDirection.Rtl
+val LEFT_DIRECTION = LayoutDirection.Ltr
+val RIGHT_LAYOUT_DIRECTION = LocalLayoutDirection provides RIGHT_DIRECTION
+val LEFT_LAYOUT_DIRECTION = LocalLayoutDirection provides LEFT_DIRECTION
 
 @OptIn(ExperimentalMaterial3Api::class)
 fun getFormattedDateJavaTime(datePickerState: DatePickerState): String {

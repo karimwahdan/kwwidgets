@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -49,9 +50,9 @@ fun Span(text:String,
 
 
 @Composable
-fun LabelSpan(value:String,label:String,labelColor:Color= BLACK,
+fun LabelSpan(value:String, label:String, labelColor:Color= blackColor(LocalContext.current),
               labelWeight: FontWeight=FontWeight.Bold,
-              spanColor: Color= BLUE,maximumLines:Int=1,
+              spanColor: Color= blueColor(LocalContext.current), maximumLines:Int=1,
               layoutDirection: ProvidedValue<LayoutDirection> = RIGHT_LAYOUT_DIRECTION){
     CompositionLocalProvider(layoutDirection) {
         Row(verticalAlignment = Alignment.CenterVertically){
